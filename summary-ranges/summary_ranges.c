@@ -38,7 +38,7 @@ int main() {
     
 
     int min = src[0];
-    int max = src[9];
+    int max = src[src_index - 1];
     
     int start = 0;
     int end = 0;
@@ -60,7 +60,10 @@ int main() {
     int index = 0;
     for(index = 0; index < src_index; index++) {
         printf("%d  ", src[index]);
-        index_map[src[index] - min] = 1;
+        if(min < 0)
+            index_map[src[index] - min] = 1;
+        else
+            index_map[src[index]] = 1;
     }
 
     printf("\n");
@@ -79,10 +82,19 @@ int main() {
 
         if(index_map[index] == 0 && start != -1) {
             end = index - 1;
-            if(start == end)
-                printf("\"%d\" ", start + min);
-            else
-                printf("\"%d-->%d\" ", start + min, end + min);
+            if(start == end) {
+                if(min < 0)
+	   printf("\"%d\" ", start + min);
+	else
+	   printf("\"%d\" ", start);
+	    	
+            }
+            else {
+                if(min < 0)
+                    printf("\"%d-->%d\" ", start + min, end + min);
+                else
+                    printf("\"%d-->%d\" ", start, end);
+            }
             
             start = end = -1;
         }
@@ -90,10 +102,18 @@ int main() {
         if(index == length - 1 && index_map[index] == 1) {
             end = index;
             
-            if(start == end)
-                printf("\"%d\"", start + min);
-            else
-                printf("\"%d-->%d\"", start + min, end + min);
+            if(start == end) {
+                if(min < 0)
+                    printf("\"%d\"", start + min);
+                else
+                    printf("\"%d\"", start);
+            }
+            else{
+                if(min < 0)
+                    printf("\"%d-->%d\"", start + min, end + min);
+                else
+                    printf("\"%d-->%d\"", start, end);
+            }
         }
     }
     printf("]\n");
