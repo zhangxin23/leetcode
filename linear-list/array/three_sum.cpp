@@ -44,4 +44,35 @@ class Solution {
             }
             return result;
         }
+
+
+        vector<vector<int> > threeSum_1(vector<int>& num, int target) {
+            vector<vector<int> > result;
+            if(num.size() < 3)
+                return result;
+            sort(num.begin(), num.end());
+
+            auto last = num.end();
+            for(auto a = num.begin(); a != last - 2; a++) {
+                auto b = a + 1;
+                auto c = last - 1;
+
+                while(b < c) {
+                    const int sum = *a + *b + *c;
+                    if(sum < target)
+                        b++;
+                    else if(sum > target)
+                        c--;
+                    else {
+                        result.push_back({*a, *b, *c});
+                        b++;
+                        c--;
+                    }
+                }
+            }
+
+            sort(result.begin(), result.end());
+            result.erase(unique(result.begin(), result.end(), result.end()));
+            return result;
+        }
 };
