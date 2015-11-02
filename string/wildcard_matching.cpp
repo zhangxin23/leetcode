@@ -17,15 +17,16 @@
 
 class Solution {
     public:
-        bool isMatch(const char* s, const char* p) {
+        bool isMatch(const char *s, const char *p) {
+            if(s == NULL)
+                return p == NULL;
+
             if(*p == '*') {
                 while(*p == '*')
                     p++;
-
                 if(*p == '\0')
                     return true;
-
-                while(*s && !isMatch(s, p))
+                while(*s != '\0' && !isMatch(s, p))
                     s++;
 
                 return *s != '\0';
