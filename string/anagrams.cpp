@@ -1,3 +1,10 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+
+using namespace std;
+
 /**
  *Given an array of strings, return all groups of strings that are anagrams.
  *Note: All inputs will be in lower-case.

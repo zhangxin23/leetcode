@@ -1,0 +1,67 @@
+cmake_minimum_required(VERSION 3.3)
+project(leetcode)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+set(SOURCE_FILES
+    linear-list/array/binary_search.cpp
+    linear-list/array/candy.cpp
+    linear-list/array/climbing_stairs.cpp
+    linear-list/array/four_sum.cpp
+    linear-list/array/gas_station.cpp
+    linear-list/array/gray_code.cpp
+    linear-list/array/longest_consecutive_sequence.cpp
+    linear-list/array/median_of_two_sorted_arrays.cpp
+    linear-list/array/next_permutation.cpp
+    linear-list/array/permulation_sequence.cpp
+    linear-list/array/plus_one.cpp
+    linear-list/array/remove_duplicates_from_sorted_array.cpp
+    linear-list/array/remove_duplicates_from_sorted_array_II.cpp
+    linear-list/array/remove_element.cpp
+    linear-list/array/rotate_image.cpp
+    linear-list/array/search_in_rotated_sorted_array.cpp
+    linear-list/array/search_rotated_sorted_array_II.cpp
+    linear-list/array/set_matrix_zeroes.cpp
+    linear-list/array/single_number.cpp
+    linear-list/array/single_number_II.cpp
+    linear-list/array/str_to_int.cpp
+    linear-list/array/three_sum.cpp
+    linear-list/array/three_sum_closest.cpp
+    linear-list/array/trapping_rain_water.cpp
+    linear-list/array/two_sum.cpp
+    linear-list/array/valid_sudoku.cpp
+    linear-list/list/add_two_numbers.cpp
+    linear-list/list/copy_list_with_random_pointer.cpp
+    linear-list/list/linked_list_cycle.cpp
+    linear-list/list/linked_list_cycle_II.cpp
+    linear-list/list/lru_cache.cpp
+    linear-list/list/partition_list.cpp
+    linear-list/list/remove_duplicated_from_sorted_list_II.cpp
+    linear-list/list/remove_duplicates_from_sorted_list.cpp
+    linear-list/list/remove_nth_node_from_end_of_list.cpp
+    linear-list/list/reorder_list.cpp
+    linear-list/list/reverse_linked_list_II.cpp
+    linear-list/list/reverse_nodes_in_k_group.cpp
+    linear-list/list/rotate_list.cpp
+    linear-list/list/swap_nodes_in_pairs.cpp
+    string/add_binary.cpp
+    string/anagrams.cpp
+    string/atoi.cpp
+    string/integer_to_roman.cpp
+    string/length_of_last_word.cpp
+    string/longest_common_prefix.cpp
+    string/longest_palindromic_substring.cpp
+    string/regular_expression_matching.cpp
+    string/roman_to_integer.cpp
+    string/simplify_path.cpp
+    string/strStr.cpp
+    string/valid_number.cpp
+    string/valid_palindrome.cpp
+    string/wildcard_matching.cpp
+    temp/basic-calculator/basic_calculator.cpp
+    temp/find-missing-positive/find_missing_positive.c
+    temp/sort-colors/sorted_colors.c
+    temp/summary-ranges/summary_ranges.c
+    temp/summary-ranges/summary_ranges_fast.c)
+
+add_executable(leetcode ${SOURCE_FILES})

@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 /**
  *There are N children standing in a line. Each child is assigned a rating value.
  *You are giving candies to these children subjected to the following requirements:
@@ -30,10 +35,12 @@ class Solution {
                 }
             }
 
+            int sum = 0;
             for(int i = 0; i < n; i++) {
-                increments[i]++;
+                sum += increments[i];
             }
+            sum += n;
 
-            return increments;
+            return sum;
         }
 };

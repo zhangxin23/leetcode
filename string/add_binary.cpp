@@ -1,3 +1,8 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
 /**
  *Given two binary strings, return their sum (also a binary string).
  *For example,

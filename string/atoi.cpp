@@ -1,3 +1,6 @@
+#include <stddef.h>
+#include <limits.h>
+
 /**
  *Implement  to convert a string to an integer.
  *Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.
@@ -39,8 +42,7 @@ class Solution {
             while(*str) {
                 if(*str >= '0' && *str <= '9') {
                     num = num * 10 + flag * (*str - '0');
-                    if((flag == 1 && num >= 2147483647) || (
-                                flag == -1 && num <= -2147483648)) {
+                    if((flag == 1 && num >= 2147483647) || (flag == -1 && num <= -2147483648)) {
                         return flag == 1 ? INT_MAX : INT_MIN;
                     }
                     str++;
@@ -48,6 +50,6 @@ class Solution {
                     break;
                 }
             }
-            return (int)numm;
+            return (int)num;
         }
 };

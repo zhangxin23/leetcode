@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 /**
  *Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target?
  *Find all unique quadruplets in the array which gives the sum of target.
@@ -20,7 +26,7 @@ class Solution {
             sort(num.begin(), num.end());
 
             auto last = num.end();
-            for(auto a = num.betin(); a < last - 3; a++) {
+            for(auto a = num.begin(); a < last - 3; a++) {
                 for(auto b = a + 1; b < last - 2; b++) {
                     auto c = b + 1;
                     auto d = last - 1;
@@ -38,7 +44,8 @@ class Solution {
                 }
             }
             sort(result.begin(), result.end());
-            result.erase(unique(result.begin(), result.end(), result.end()));
+            vector<vector<int> >::iterator unique_end = unique(result.begin(), result.end());
+            result.erase(unique_end, result.end());
             return result;
         }
 };

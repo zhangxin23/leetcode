@@ -1,3 +1,5 @@
+
+
 /**
  *There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays.
  *The overall run time complexity should be O(log(m + n)).
@@ -22,10 +24,10 @@ class Solution {
             if(k == 1)
                 return min(A[0], B[0]);
 
-            int idx_a = min(k / 2, m), idx_b = k - ida_a;
+            int idx_a = min(k / 2, m), idx_b = k - idx_a;
             if(A[idx_a - 1] < B[idx_b - 1])
                 return find_kth(A + idx_a, m - idx_a, B, n, k - idx_a);
-            eles if(A[idx_a - 1] > B[idx_b -1])
+            else if(A[idx_a - 1] > B[idx_b -1])
                 return find_kth(A, m, B + idx_b, n - idx_b, k - idx_b);
             else
                 return A[idx_a - 1];

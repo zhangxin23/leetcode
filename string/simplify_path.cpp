@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 /**
  *Given an absolute path for a file (Unix-style), simplify it.
  *For example,
@@ -14,10 +19,10 @@ class Solution {
         string simplifyPath(const string &path) {
             vector<string> dirs;
 
-            for(auto i = path.begin(); i != path.end();) {
+            for(int i = 0; i < path.length();) {
                 i++;
-                auto j = path.find(i, path.end(), '/');
-                auto dir = path.substr(i, j);
+                int j = path.find('/', i);
+                string dir = path.substr(i, j);
                 if(!dir.empty() && dir != ".") {
                     if(dir == "..") {
                         if(!dirs.empty())
