@@ -35,7 +35,7 @@ public:
                         next.push(node->right);
                 } else {
                     if(node->right != NULL)
-                        next.push(node->right); 
+                        next.push(node->right);
                     if(node->left != NULL)
                         next.push(node->left);
                 }
