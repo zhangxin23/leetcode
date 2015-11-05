@@ -14,7 +14,7 @@ public:
 
         if(root != NULL) {
             stk.push(root);
-            node = stk.top();
+            node = root->left;
         }
 
         while(!stk.empty()) {

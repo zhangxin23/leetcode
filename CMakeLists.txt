@@ -68,8 +68,8 @@ set(SOURCE_FILES
     stack/largest_rectangle_in_histogram.cpp
     stack/evaluate_reverse_polish_notation.cpp
     binary-tree/binary_tree_preorder_traversal.cpp
-    binary-tree/binary_tree_preorder_traversal.cpp
     binary-tree/tree.h
-    binary-tree/binary_tree_inorder_traversal.cpp)
+    binary-tree/binary_tree_inorder_traversal.cpp
+    binary-tree/binary_tree_postorder_traversal.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})
