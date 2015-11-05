@@ -70,6 +70,6 @@ set(SOURCE_FILES
     binary-tree/binary_tree_preorder_traversal.cpp
     binary-tree/tree.h
     binary-tree/binary_tree_inorder_traversal.cpp
-    binary-tree/binary_tree_postorder_traversal.cpp)
+    binary-tree/binary_tree_postorder_traversal.cpp "binary-tree/binary_tree_level_order_traversal .cpp" "binary-tree/binary_tree_level_order_traversal_II .cpp")
 
 add_executable(leetcode ${SOURCE_FILES})
