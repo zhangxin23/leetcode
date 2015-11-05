@@ -64,6 +64,13 @@ set(SOURCE_FILES
     temp/find-missing-positive/find_missing_positive.c
     temp/sort-colors/sorted_colors.c
     temp/summary-ranges/summary_ranges.c
-    temp/summary-ranges/summary_ranges_fast.c stack/largest_rectangle_in_histogram.cpp stack/largest_rectangle_in_histogram.h stack/largest_rectangle_in_histogram.cpp stack/evaluate_reverse_polish_notation.cpp binary-tree/binary_tree_preorder_traversal.cpp binary-tree/binary_tree_preorder_traversal.cpp binary-tree/tree.h)
+    temp/summary-ranges/summary_ranges_fast.c
+    stack/largest_rectangle_in_histogram.cpp
+    stack/largest_rectangle_in_histogram.h
+    stack/largest_rectangle_in_histogram.cpp
+    stack/evaluate_reverse_polish_notation.cpp
+    binary-tree/binary_tree_preorder_traversal.cpp
+    binary-tree/binary_tree_preorder_traversal.cpp
+    binary-tree/tree.h binary-tree/binary_tree_inorder_traversal.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})

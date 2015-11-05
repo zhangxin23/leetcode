@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <stack>
 #include "tree.h"
 
 using namespace std;
@@ -7,14 +9,14 @@ class Solution {
 public:
     vector<int> preorderTraversal(TreeNode *root) {
         vector<int> result;
-        TreeNode *p;
+        TreeNode *node;
         stack<const TreeNode *> stk;
 
         if(root != NULL)
             stk.push(root);
 
         while(!stk.empty()) {
-            TreeNode *node = stk.top();
+            node = stk.top();
             stk.pop();
             result.push_bakc(node->val);
 
