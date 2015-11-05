@@ -10,7 +10,7 @@ public:
     vector<int> preorderTraversal(TreeNode *root) {
         vector<int> result;
         TreeNode *node;
-        stack<const TreeNode *> stk;
+        stack<TreeNode *> stk;
 
         if(root != NULL)
             stk.push(root);
