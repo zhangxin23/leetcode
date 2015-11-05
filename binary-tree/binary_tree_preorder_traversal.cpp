@@ -18,7 +18,7 @@ public:
         while(!stk.empty()) {
             node = stk.top();
             stk.pop();
-            result.push_bakc(node->val);
+            result.push_back(node->val);
 
             if(node->right != NULL)
                 stk.push(node->right);
