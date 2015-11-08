@@ -70,6 +70,14 @@ set(SOURCE_FILES
     binary-tree/binary_tree_preorder_traversal.cpp
     binary-tree/tree.h
     binary-tree/binary_tree_inorder_traversal.cpp
-    binary-tree/binary_tree_postorder_traversal.cpp "binary-tree/binary_tree_level_order_traversal .cpp" "binary-tree/binary_tree_level_order_traversal_II .cpp" "binary-tree/binary_tree_zigzag_level_order_traversal .cpp" binary-tree/recover_binary_search_tree.cpp binary-tree/same_tree.cpp binary-tree/symmetric_tree.cpp binary-tree/balanced_binary_tree.cpp)
+    binary-tree/binary_tree_postorder_traversal.cpp
+    binary-tree/binary_tree_level_order_traversal.cpp
+    binary-tree/binary_tree_level_order_traversal_II.cpp
+    binary-tree/binary_tree_zigzag_level_order_traversal.cpp
+    binary-tree/recover_binary_search_tree.cpp
+    binary-tree/same_tree.cpp
+    binary-tree/symmetric_tree.cpp
+    binary-tree/balanced_binary_tree.cpp
+    binary-tree/flatten_binary_tree_to_linked_list.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})
