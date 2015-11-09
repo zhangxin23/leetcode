@@ -78,6 +78,7 @@ set(SOURCE_FILES
     binary-tree/same_tree.cpp
     binary-tree/symmetric_tree.cpp
     binary-tree/balanced_binary_tree.cpp
-    binary-tree/flatten_binary_tree_to_linked_list.cpp)
+    binary-tree/flatten_binary_tree_to_linked_list.cpp
+    binary-tree/populating_next_right_pointers_in_each_node_II.cpp binary-tree/construct_binary_tree_from_preorder_and_inorder_traversal.cpp binary-tree/construct_binary_tree_from_inorder_and_postorder_traversal.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})
