@@ -89,6 +89,6 @@ set(SOURCE_FILES
     binary-tree/validate_binary_search_tree.cpp
     binary-tree/minimum_depth_of_binary_tree.cpp
     binary-tree/maximum_depth_of_binary_tree.cpp
-    binary-tree/path_sum.cpp)
+    binary-tree/path_sum.cpp binary-tree/path_sum_II.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})
