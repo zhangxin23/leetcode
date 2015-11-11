@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "tree.h"
 
 using namespace std;
@@ -24,5 +25,26 @@ using namespace std;
 
 class Solution {
 public:
-    
+    vector<vector<int> > pathSum(TreeNode *root, int sum) {
+        vector<vector<int> > result;
+        vector<int> cur;
+        pathSumCore(root, sum, cur, result);
+        return result;
+    }
+
+    void pathSumCore(TreeNode *root, int sum, vector<int> &cur, vector<vector<int> > &result) {
+        if(!root)
+            return;
+
+        cur.push_back(root->val);
+
+        if(!root->left && !root->right && root->val == sum) {
+            result.push_back(cur);
+        }
+
+        pathSumCore(root->left, sum - root->val, cur, result);
+        pathSumCore(root->right, sum - root->val, cur, result);
+
+        cur.pop_back();
+    }
 };
