@@ -89,6 +89,6 @@ set(SOURCE_FILES
     binary-tree/validate_binary_search_tree.cpp
     binary-tree/minimum_depth_of_binary_tree.cpp
     binary-tree/maximum_depth_of_binary_tree.cpp
-    binary-tree/path_sum.cpp binary-tree/path_sum_II.cpp binary-tree/binary_tree_maximum_path_sum.cpp binary-tree/sum_root_to_leaf_numbers.cpp "binary-tree/populating_next_right_pointers _in_each_node.cpp" sort/merge_sorted_array.cpp sort/merge_two_sorted_lists.cpp sort/merge_k_sorted_lists.cpp sort/insertion_sort_list.cpp sort/sort_list.cpp)
+    binary-tree/path_sum.cpp binary-tree/path_sum_II.cpp binary-tree/binary_tree_maximum_path_sum.cpp binary-tree/sum_root_to_leaf_numbers.cpp "binary-tree/populating_next_right_pointers _in_each_node.cpp" sort/merge_sorted_array.cpp sort/merge_two_sorted_lists.cpp sort/merge_k_sorted_lists.cpp sort/insertion_sort_list.cpp sort/sort_list.cpp sort/first_missing_positive.cpp sort/sort_colors.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})
