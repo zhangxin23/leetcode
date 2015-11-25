@@ -27,6 +27,21 @@ public:
         return result;
     }
 
+    vector<vector<string> > partition_dp(string s) {
+        int n = s.length();
+        vector<vector<bool> > f(n, vector<bool>(n, false));
+        for(int i = 0; i < n; i++) {
+            for(int j = i; j < n; j++) {
+                f[i][j] = s[i] == s[j] && (j - i < 2 || f[i + 1][j - 1]);
+            }
+        }
+
+        vector<vector<string> > result;
+        vector<string> path;
+        dfs_dp(s, path, result, f, 0);
+        return result;
+    }
+
 private:
     void dfs(string &s, vector<string> &path, vector<vector<string> > &result, int prev, int start) {
         if(start == s.size()) {
@@ -51,5 +66,21 @@ private:
             end--;
         }
         return start >= end;
+    }
+
+    void dfs_dp(const string &s, vector<string> &path, vector<vector<string> > &result,
+                const vector<vector<bool> > &f, int start) {
+        if(start == s.length()) {
+            result.push_back(path);
+            return;
+        }
+
+        for(int k = start; k < s.length(); k++) {
+            if(f[start][k]) {
+                path.push_back(s.substr(start, k - start + 1));
+                dfs_dp(s, path, result, f, start + k + 1);
+                path.pop_back();
+            }
+        }
     }
 };
