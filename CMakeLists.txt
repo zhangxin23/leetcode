@@ -115,6 +115,6 @@ set(SOURCE_FILES
     depth-first-search/unique_paths.cpp
     depth-first-search/unique_paths_II.cpp
     depth-first-search/n_queens.cpp
-    depth-first-search/n_queens_II.cpp depth-first-search/restore_ip_addresses.cpp depth-first-search/combination_sum.cpp depth-first-search/combination_sum_II.cpp depth-first-search/generate_parentheses.cpp depth-first-search/sudoku_solver.cpp depth-first-search/word_search.cpp)
+    depth-first-search/n_queens_II.cpp depth-first-search/restore_ip_addresses.cpp depth-first-search/combination_sum.cpp depth-first-search/combination_sum_II.cpp depth-first-search/generate_parentheses.cpp depth-first-search/sudoku_solver.cpp depth-first-search/word_search.cpp divide-and-conquer/pow.cpp divide-and-conquer/sqrt.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})
