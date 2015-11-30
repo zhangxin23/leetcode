@@ -115,6 +115,6 @@ set(SOURCE_FILES
     depth-first-search/unique_paths.cpp
     depth-first-search/unique_paths_II.cpp
     depth-first-search/n_queens.cpp
-    depth-first-search/n_queens_II.cpp depth-first-search/restore_ip_addresses.cpp depth-first-search/combination_sum.cpp depth-first-search/combination_sum_II.cpp depth-first-search/generate_parentheses.cpp depth-first-search/sudoku_solver.cpp depth-first-search/word_search.cpp divide-and-conquer/pow.cpp divide-and-conquer/sqrt.cpp greedy_algorithm/jump_game.cpp greedy_algorithm/jump_game_II.cpp "greedy_algorithm/best_time_to_buy_and_sell_stock .cpp" greedy_algorithm/best_time_to_buy_and_sell_stock_II.cpp)
+    depth-first-search/n_queens_II.cpp depth-first-search/restore_ip_addresses.cpp depth-first-search/combination_sum.cpp depth-first-search/combination_sum_II.cpp depth-first-search/generate_parentheses.cpp depth-first-search/sudoku_solver.cpp depth-first-search/word_search.cpp divide-and-conquer/pow.cpp divide-and-conquer/sqrt.cpp greedy_algorithm/jump_game.cpp greedy_algorithm/jump_game_II.cpp "greedy_algorithm/best_time_to_buy_and_sell_stock .cpp" greedy_algorithm/best_time_to_buy_and_sell_stock_II.cpp greedy_algorithm/longest_substring_without_repeating_characters.cpp)
 
 add_executable(leetcode ${SOURCE_FILES})
