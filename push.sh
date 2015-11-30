@@ -7,4 +7,4 @@ fi
 
 git add .
 git commit -a -m "$1"
-git-self
+git push origin master
