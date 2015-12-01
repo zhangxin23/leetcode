@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -43,11 +44,54 @@ using namespace std;
 
 class Solution {
 public:
-    bool isScramble(string s1, string s2) {
+    bool isScramble_dp(string s1, string s2) {
+        int n = s1.length();
+        if(s2.length() != n)
+            return false;
 
+        vector<vector<vector<bool> > > f(n + 1, vector<vector<bool> > (n, vector<boo>(n, false)));
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                f[1][i][j] = s1[i] == s2[i];
+            }
+        }
+
+        for(int m = 1; m < n; m++) {
+            for(int i = 0; i + m < n; i++) {
+                for(int j = 0; j + m < n; j++) {
+                    for(int k = 0; k < n; k++) {
+                        if((f[k][i][j] && f[m - k][i + k][j + k]) ||
+                           (f[k][i][j + m - k] && f[m - k][i + k][j])) {
+                            f[m][i][j] = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return f[n][0][0];
     }
 
-    bool isScramble_core(string s1, int start_1, int end_1, string s2, int start_2, int end_2) {
-        
+
+    bool isScramble_recur(string s1, string s2) {
+        return isScramble_core(s1.begin(), s1.end(), s2.begin());
+    }
+
+private:
+    typedef string::iterator StrIte;
+    bool isScramble_core(StrIte first1, StrIte last1, StrIte first2) {
+        int length = distance(first1, last1);
+        StrIte last2 = next(first2, length);
+
+        if(length == 1)
+            return *first1 == *first2;
+
+        for(int i = 1; i < length; i++) {
+            if((isScramble_core(first1, first1 + i, first2) && isScramble_core(first1 + i, last1, first2 + i)) ||
+               (isScramble_core(first1, first1 + i, last2 - i) && isScramble_core(first1 + i, last1, first2)))
+                return true;
+        }
+        return false;
     }
 };
