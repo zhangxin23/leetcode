@@ -19,7 +19,30 @@ using namespace std;
 
 class Solution {
 public:
-    vector<string> wordBreak(string s, unordered_set<string>& wordDict) {
-        
+    vector<string> wordBreak(string s, unordered_set<string> &wordDict) {
+        vector<string> path;
+        vector<string> result;
+        dfs(s, wordDict, 0, path, result);
+        return result;
+    }
+
+private:
+    void dfs(string s, unordered_set<string> &wordDict, int start,
+             vector<string> &path, vector<string> &result) {
+        if(start == s.length()) {
+            string tmp;
+            for(string item: path)
+                tmp.append(" ").append(item);
+            result.push_back(tmp);
+            return;
+        }
+
+        for(int i = start; i < s.length(); i++) {
+            if(wordDict.find(s.substr(start, i - start + 1)) != wordDict.end()) {
+                path.push_back(s.substr(start, i - start + 1));
+                dfs(s, wordDict, i, path, result);
+                path.pop_back();
+            }
+        }
     }
 };
