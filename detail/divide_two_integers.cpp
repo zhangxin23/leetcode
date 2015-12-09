@@ -11,6 +11,9 @@ using namespace std;
 class Solution {
 public:
     int divide(int dividend, int divisor) {
+        if(divisor == 0)
+            return 0;
+
         long long a = dividend >= 0 ? dividend : -(long long)dividend;
         long long b = divisor >= 0 ? divisor : -(long long)divisor;
 
