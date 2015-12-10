@@ -24,23 +24,16 @@ public:
         int result = 0;
         for(int i = 0; i < points.size(); i++) {
             for(int j = i + 1; j < points.size(); j++) {
-                int sign = 0;
-                int a = 0, b = 0, c = 0;
-                if(points[i].x == points[j].x) {
-                    sign = 1;
-                } else {
-                    a = points[j].x - points[i].x;
-                    b = points[j].y - points[i].y;
-                    c = a * points[i].y - b * points[i].x;
-                }
+                int a = points[j].x - points[i].x;
+                int b = points[j].y - points[j].x;
+                int c = a * points[i].y - b * points[i].x;
 
                 int count = 0;
                 for(int k = 0; k < points.size(); k++) {
-                    if((sign == 0 && a * points[k].y == c + b * points[k].x) ||
-                       (sign == 1 && points[k].x == points[j].x)) {
+                    if(a * points[k].y == c + b * points[k].x)
                         count++;
-                    }
                 }
+
                 if(count > result)
                     result = count;
             }
