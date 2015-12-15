@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../linear-list/list/List.h"
+#include "../linear-list/list/list.h"
 
 using namespace std;
 

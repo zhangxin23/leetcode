@@ -14,7 +14,7 @@ public:
     }
 
     TreeNode* sortedArray2BSTCore(int array[], int start, int end) {
-        if(array[start] >= array[end])
+        if(start > end)
             return NULL;
 
         int mid = start + (end - start) / 2;

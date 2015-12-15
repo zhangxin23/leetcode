@@ -44,6 +44,7 @@ set(SOURCE_FILES
     linear-list/list/reverse_nodes_in_k_group.cpp
     linear-list/list/rotate_list.cpp
     linear-list/list/swap_nodes_in_pairs.cpp
+    linear-list/list/list.h
     stack/longest_valid_parentheses.cpp
     stack/valid_parentheses.cpp
     string/add_binary.cpp
