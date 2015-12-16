@@ -22,6 +22,8 @@ public:
         return sortedList2BSTCore(head, 0, len - 1);
     }
 
+private:
+    //中序遍历思路
     TreeNode* sortedList2BSTCore(ListNode*& list, int start, int end) {
         if(start > end)
             return NULL;
@@ -33,5 +35,32 @@ public:
         list = list->next;
         parent->right = sortedList2BSTCore(list, mid + 1, end);
         return parent;
+    }
+
+public:
+    TreeNode* sortedList2BSTIterator(ListNode *head) {
+        return sortedList2BSTIteratorCore(head);
+    }
+
+private:
+    //仿照排序数组转化为BST的思路
+    TreeNode* sortedList2BSTIteratorCore(ListNode *head) {
+        if(head == NULL)
+            return NULL;
+
+        ListNode *fast = head, *slow = head, *prev = head;
+        while(fast->next != NULL) {
+            fast = fast->next->next;
+            prev = slow;
+            slow = slow->next;
+        }
+
+        ListNode *left = head, *mid = slow, *right = mid->next;
+        prev->next = NULL;
+
+        TreeNode *root = new TreeNode(mid->val);
+        root->left = sortedList2BSTIteratorCore(left);
+        root->right = sortedList2BSTIteratorCore(right);
+        return root;
     }
 };
