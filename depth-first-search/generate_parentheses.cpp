@@ -11,7 +11,6 @@ using namespace std;
  * "((()))", "(()())", "(())()", "()(())", "()()()"
  * */
 
-
 class Solution {
 public:
     vector<string> generateParentheses(int n) {
@@ -24,7 +23,7 @@ public:
 private:
     void dfs(int n, int left, int right, string s, vector<string> &result) {
         if(left == n) {
-            s.append(n - left, ')');
+            s.append(n - right, ')');
             result.push_back(s);
         }
 
