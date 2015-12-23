@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
@@ -18,7 +19,6 @@ using namespace std;
  *   [7]
  *   [2, 2, 3]
  * */
-
 
 class Solution {
 public:
