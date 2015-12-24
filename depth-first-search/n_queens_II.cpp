@@ -13,7 +13,7 @@ class Solution {
 public:
     int nQueens(int n) {
         int count;
-        vector<int> C;
+        vector<int> C(n, -1);
         dfs(C, count, 0);
         return count;
     }
