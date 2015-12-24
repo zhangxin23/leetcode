@@ -31,7 +31,7 @@ class Solution {
 public:
     vector<vector<string> > nQueens(int n) {
         vector<vector<string> > result;
-        vector<int> C;
+        vector<int> C(n, -1);
         dfs(C, result, 0);
         return result;
     }
