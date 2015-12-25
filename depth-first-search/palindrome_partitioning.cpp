@@ -78,7 +78,7 @@ private:
         for(int k = start; k < s.length(); k++) {
             if(f[start][k]) {
                 path.push_back(s.substr(start, k - start + 1));
-                dfs_dp(s, path, result, f, start + k + 1);
+                dfs_dp(s, path, result, f, k + 1);
                 path.pop_back();
             }
         }
