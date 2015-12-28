@@ -44,6 +44,7 @@ private:
                 dfs(s, i + 1, step + 1, ip + ".", result);
             }
 
+            //去掉前导零
             if(num == 0)
                 break;
         }
