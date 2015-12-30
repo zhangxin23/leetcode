@@ -34,13 +34,13 @@ public:
         for(int end = 0; end < s.size(); end++) {
             if(expected[s[end]] > 0) {
                 appeared[s[end]]++;
-                if(appeared[s[end]] >= expected[s[end]]) {
+                if(appeared[s[end]] <= expected[s[end]]) {
                     appeare_count++;
                 }
             }
 
-            if(appeare_count >= t.size()) {
-                while((appeared[s[start]] > expected[s[start]]) || expected[s[start]] == 0) {
+            if(appeare_count >= t.size() && start < 256) {
+                while((start < 256) && ((appeared[s[start]] > expected[s[start]]) || expected[s[start]] == 0)) {
                     appeared[s[start]]--;
                     start++;
                 }
@@ -52,7 +52,7 @@ public:
             }
         }
 
-        if(minWidth == INT32_MAX)
+        if(minWidth == INT32_MAX || start >= 256)
             return "";
         else
             return s.substr(minStart, minWidth);
