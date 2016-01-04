@@ -30,22 +30,22 @@ public:
         while(true) {
             for(int i = x_begin; i <= x_end; i++)
                 result.push_back(matrix[y_begin][i]);
-            if(y_begin++ > y_end)
+            if(++y_begin > y_end)
                 break;
 
             for(int j = y_begin; j <= y_end; j++)
                 result.push_back(matrix[j][x_end]);
-            if(x_end-- < x_begin)
+            if(--x_end < x_begin)
                 break;
 
             for(int i = x_end; i >= x_begin; i--)
                 result.push_back(matrix[y_end][i]);
-            if(y_end-- < y_begin)
+            if(--y_end < y_begin)
                 break;
 
             for(int j = y_end; j >= y_begin; j--)
                 result.push_back(matrix[j][x_begin]);
-            if(x_begin++ > x_end)
+            if(++x_begin > x_end)
                 break;
         }
 
