@@ -32,22 +32,22 @@ public:
         while(true) {
             for(int i = x_begin; i <= x_end; i++)
                 result[y_begin][i] = num++;
-            if(y_begin++ > y_end)
+            if(++y_begin > y_end)
                 break;
 
             for(int j = y_begin; j <= y_end; j++)
                 result[j][x_end] = num++;
-            if(x_end-- < x_begin)
+            if(--x_end < x_begin)
                 break;
 
             for(int i = x_end; i >= x_begin; i--)
                 result[y_end][i] = num++;
-            if(y_end-- < y_begin)
+            if(--y_end < y_begin)
                 break;
 
             for(int j = y_end; j >= y_begin; j--)
                 result[j][x_begin] = num++;
-            if(x_begin++ > x_end)
+            if(++x_begin > x_end)
                 break;
         }
 
