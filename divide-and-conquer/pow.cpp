@@ -21,7 +21,7 @@ private:
             return 1;
 
         double v = power(x, n / 2);
-        if(x % 2 == 0)
+        if(n % 2 == 0)
             return v * v;
         else
             return v * v * x;
