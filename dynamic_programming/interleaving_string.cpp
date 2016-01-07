@@ -13,6 +13,12 @@ using namespace std;
  *
  * When s3 = "aadbbcbcac", return true.
  * When s3 = "aadbbbaccc", return false.
+ *
+ * 状态方程：table[i][j]表示s3[0...i+j]是s1[0...i]和s2[0...j]的interleaving
+ *
+ * s1[i - 1] == s3[i + j - 1]       table[i][j] = table[i - 1][j]
+ * s2[j - 1] == s3[i + j - 1]       table[i][j] = table[i][j - 1]
+ *
  * */
 
 class Solution {
@@ -23,11 +29,11 @@ public:
         vector<vector<bool> > table(n + 1, vector<bool>(m + 1, false));
 
         for(int i = 1; i <= n ; i++) {
-            table[i][0] = s1[i - 1] == s3[i - 1] && table[i - 1][0];
+            table[i][0] = s1[i - 1] == s3[i - 1] || table[i - 1][0];
         }
 
         for(int j = 1; j <= m; j++) {
-            table[0][j] = s2[j - 1] == s3[j - 1] && table[0][j - 1];
+            table[0][j] = s2[j - 1] == s3[j - 1] || table[0][j - 1];
         }
 
         for(int i = 1; i <= n; i++) {

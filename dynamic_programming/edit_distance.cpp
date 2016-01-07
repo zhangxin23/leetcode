@@ -12,6 +12,15 @@ using namespace std;
  *   a) Insert a character
  *   b) Delete a character
  *   c) Replace a character
+ *
+ * 状态方程：f[i][j]表示word1[0...i]和word2[0...j]之间变换步数
+ *
+ * word1[i - 1] == word2[j - 1]     f[i][j] = f[i - 1][j - 1]
+ * word1[i - 1] != word2[j - 1]
+ *      delete                      f[i][j] = f[i - 1][j] + 1
+ *      insert                      f[i][j] = f[i][j - 1] + 1
+ *      replace                     f[i][j] = f[i - 1][j - 1] + 1
+ *
  * */
 
 class Solution {
@@ -19,7 +28,7 @@ public:
     int minDistance(string word1, string word2) {
         int n = word1.length();
         int m = word2.length();
-        vector<vector<int> > f(n, vector<int>(m, 0));
+        vector<vector<int> > f(n + 1, vector<int>(m + 1, 0));
 
         for(int i = 0; i <= n; i++) {
             f[i][0] = i;
