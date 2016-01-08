@@ -49,7 +49,7 @@ public:
         if(s2.length() != n)
             return false;
 
-        vector<vector<vector<bool> > > f(n + 1, vector<vector<bool> > (n, vector<boo>(n, false)));
+        vector<vector<vector<bool> > > f(n + 1, vector<vector<bool> > (n, vector<bool>(n, false)));
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
                 f[1][i][j] = s1[i] == s2[i];
