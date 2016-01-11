@@ -40,6 +40,10 @@ using namespace std;
  * We say that "rgtae" is a scrambled string of "great".
  *
  * Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.
+ *
+ * 设状态为 f[n][i][j]，表示长度为 n，起点为 s1[i] 和起点为 s2[j] 两个字符串是否互为 scramble，则状态转移方程为:
+ *
+ *      f[n][i][j] = (f[k][i][j] && f[n-k][i+k][j+k]) || (f[k][i][j+n-k] && f[n-k][i+k][j])
  * */
 
 class Solution {
