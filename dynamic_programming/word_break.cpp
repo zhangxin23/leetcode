@@ -13,6 +13,11 @@ using namespace std;
  * dict = ["leet", "code"].
  *
  * Return true because "leetcode" can be segmented as "leet code".
+ *
+ * 状态方程：f[i]表示s[0...i]可以用空格切分出字典包含的单词
+ *
+ *      f[i]=f[j] && s[j...i-j+1] in dict (0 <= j < i)
+ *
  * */
 
 class Solution {
