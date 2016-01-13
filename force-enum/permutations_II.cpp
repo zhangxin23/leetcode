@@ -33,13 +33,13 @@ public:
 
         vector<int> path;
         vector<vector<int> > result;
-        dfs(input, path, result);
+        dfs(input, path, result, num.size());
         return result;
     }
 
 private:
-    void dfs(vector<pair<int, int> > &input, vector<int> &path, vector<vector<int> > &result) {
-        if(input.size() == path.size()) {
+    void dfs(vector<pair<int, int> > &input, vector<int> &path, vector<vector<int> > &result, int len) {
+        if(len == path.size()) {
             result.push_back(path);
             return;
         }
@@ -47,13 +47,13 @@ private:
         for(int i = 0; i < input.size(); i++) {
             int count = 0;
             for(int j = 0; j < path.size(); j++) {
-                if(path[i] == input[i].first)
+                if(path[j] == input[i].first)
                     count++;
             }
 
             if(count < input[i].second) {
                 path.push_back(input[i]);
-                dfs(input, path, result);
+                dfs(input, path, result, len);
                 path.pop_back();
             }
         }
