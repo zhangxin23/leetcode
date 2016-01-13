@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ public:
 
         vector<pair<int, int> > input;
         unordered_map<int, int>::const_iterator cit;
-        for(cit = count_map.begin(); cit != count_map.end(); cit++) {
+        for(cit = count_map.cbegin(); cit != count_map.end(); cit++) {
             input.push_back(*cit);
         }
 
