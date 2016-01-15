@@ -17,8 +17,8 @@ public:
 
         for(int i = 0; i < s.length(); i++) {
             if(table[s[i] - 'a'] >= start) {
-                start = table[s[i] - 'a'] + 1;
                 max_len = max(max_len, i - start);
+                start = table[s[i] - 'a'] + 1;
             }
 
             table[s[i] - 'a'] = i;

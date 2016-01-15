@@ -8,7 +8,7 @@ class Solution {
         int climbStairs(int n) {
             int prev = 0;
             int cur = 1;
-            for(int i = 1; i < n; i++) {
+            for(int i = 1; i <= n; i++) {
                 int tmp = prev;
                 cur += prev;
                 prev = tmp;
