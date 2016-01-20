@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 /**
  *Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
  *If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
@@ -10,6 +16,34 @@
 
 class Solution {
     public:
+        void next_permutation(vector<int> &nums) {
+            int n = nums.size();
+            if(n < 2)
+                return;
+
+            int pivot = -1;
+            for(int i = n - 1; i >= 1; i--) {
+                if(nums[i - 1] < nums[i]) {
+                    pivot = i - 1;
+                    break;
+                }
+            }
+
+            if(pivot == -1) {
+                reverse(nums.begin(), nums.end());
+                return;
+            }
+
+            for(int i = n - 1; i > pivot; i--) {
+                if(nums[i] > nums[pivot]) {
+                    swap(nums[i], nums[pivot]);
+                    break;
+                }
+            }
+
+            reverse(next(nums.begin(), pivot + 1), nums.end());
+        }
+
         bool nextPermutation(int A[], int n) {
             if(n == 0 || n == 1)
                 return false;
@@ -23,29 +57,26 @@ class Solution {
             }
 
             if(pivot == -1) {
-                reverse(A, 0, n - 1);
+                reverse(A, n, 0, n - 1);
                 return false;
             }
 
             //find change number
-            int change = -1;
             for(int i = n - 1; i >= pivot; i--) {
                 if(A[i] > A[pivot]) {
-                    change = i;
+                    //swap pivot number and change number
+                    swap_self(A + pivot, A + i);
                     break;
                 }
             }
 
-            //swap pivot number and change number
-            swap(A + pivot, A + change);
-
             //reverse pivot to last
-            reverse(A, pivot + 1, n - 1);
+            reverse(A, n, pivot + 1, n - 1);
             return true;
         }
 
     private:
-        void swap(int* a, int* b) {
+        void swap_self(int* a, int* b) {
             *a ^= *b;
             *b = *a ^ *b;
             *a = *a ^ *b;
