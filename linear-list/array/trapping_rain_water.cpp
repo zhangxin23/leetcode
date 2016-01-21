@@ -1,6 +1,11 @@
+#include <string.h>
+#include <algorithm>
+
+using namespace std;
+
 /**
- *Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
-  *For example, Given [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], return 6.
+ * Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
+ * For example, Given [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], return 6.
  * */
 
 class Solution {
@@ -14,7 +19,7 @@ class Solution {
 
             for(int i = 1; i < n; i++) {
                 max_left[i] = max(max_left[i - 1], A[i - 1]);
-                max_right[n - i - 1] = max(max_right[m - i], A[n - i]);
+                max_right[n - i - 1] = max(max_right[n - i], A[n - i]);
             }
 
             int sum = 0;

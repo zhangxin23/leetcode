@@ -1,6 +1,11 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 /**
- *Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules http://sudoku.com.au/TheRules.aspx.
- *The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+ * Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules http://sudoku.com.au/TheRules.aspx.
+ * The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
  * */
 
 class Solution {
@@ -12,7 +17,8 @@ class Solution {
             if(used[ch - '1'])
                 return false;
 
-            return used[ch - '1'] = true;
+            used[ch - '1'] = true;
+            return true;
         }
 
         bool isValidSudoku(const vector<vector<char> >& board) {
