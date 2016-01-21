@@ -1,6 +1,8 @@
+#include "list.h"
+
 /**
- *Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
- *Follow up: Can you solve it without using extra space?
+ * Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+ * Follow up: Can you solve it without using extra space?
  * */
 
 class Solution {
@@ -19,6 +21,6 @@ class Solution {
                     return slow2;
                 }
             }
-            return null;
+            return NULL;
         }
 };
