@@ -1,42 +1,42 @@
+#include "list.h"
+
 /**
- *Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers
- *from the original list.
- *For example,
- *Given 1->2->3->3->4->4->5, return 1->2->5.
- *Given 1->1->1->2->3, return 2->3.
+ * Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+ * For example,
+ *  Given 1->2->3->3->4->4->5, return 1->2->5.
+ *  Given 1->1->1->2->3, return 2->3.
  * */
 
 class Solution {
     public:
-        ListNode* removeDuplicates(ListNode* head) {
-            if(head == null)
-                return null;
+        ListNode* deleteDuplicates(ListNode* head) {
+            if(head == NULL)
+                return NULL;
 
             ListNode dummy(-1);
             dummy.next = head;
-            ListNode* prev = &dummy;
-            ListNode* cur = head;
+            ListNode* prev = &dummy, *cur = head;
+            bool duplicate = false;
             while(cur) {
-                bool duplicate = false;
-                while(cur->next != null && cur-val == cur->next->val) {
+                while(cur->next != NULL && cur->val == cur->next->val) {
+                    ListNode* temp = cur->next;
+                    cur->next = temp->next;
+                    delete temp;
                     duplicate = true;
-                    ListNode* tmp = cur;
-                    cur = cur->next;
-                    delete tmp;
                 }
 
                 if(duplicate) {
-                    ListNode* tmp = cur;
-                    cur = cur->next;
-                    delete tmp;
+                    prev->next = cur->next;
+                    delete cur;
+                    cur = prev->next;
+                    duplicate = false;
                     continue;
                 }
 
-                prev->next= cur;
-                prev = prev->next;
+                prev = cur;
                 cur = cur->next;
             }
-            prev->next = null;
-            return head;
+
+            return dummy.next;
         }
 };

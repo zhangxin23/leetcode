@@ -1,3 +1,8 @@
+#include <iostream>
+#include <list>
+#include <unordered_map>
+
+using namespace std;
 /**
  * Design and implement a data structure for Least Recently Used (LRU) cache.
  * It should support the following operations: get and set.
@@ -7,13 +12,6 @@
  * */
 
 class LRUCache {
-    private:
-        struct CacheNode {
-            int key;
-            int value;
-            CacheNode(int k, int v): key(k), value(v) {}
-        };
-
     public:
         LRUCache(int capacity) {
             this->capacity = capacity;
@@ -45,7 +43,13 @@ class LRUCache {
         }
 
     private:
+        struct CacheNode {
+            int key;
+            int value;
+            CacheNode(int k, int v): key(k), value(v) {}
+        };
+
         list<CacheNode> cacheList;
-        unorderd_map<int, list<CacheNode> >::iterator cacheMap;
+        unordered_map<int, list<CacheNode>::iterator> cacheMap;
         int capacity;
 };
