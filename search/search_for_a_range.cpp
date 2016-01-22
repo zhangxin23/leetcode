@@ -16,10 +16,10 @@ public:
         int lower = lower_bound(A, n, target);
         int upper = upper_bound(A, n, target);
 
-        if(lower == n - 1 || A[lower] != target)
+        if(lower == n || A[lower] != target)
             return vector<int>{-1, -1};
         else
-            return vector<int>{lower, upper};
+            return vector<int>{lower, upper - 1};
     }
 private:
     int lower_bound(int A[], int n, int target) {
