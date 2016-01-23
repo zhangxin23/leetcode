@@ -16,7 +16,7 @@ public:
         ListNode dummy(INT32_MIN);
         ListNode *p = head;
         while(p != NULL) {
-            ListNode *pos = getPos(dummy.next, p->val);
+            ListNode *pos = getPos(&dummy, p->val);
             ListNode *tmp = p->next;
             p->next = pos->next;
             pos->next = p;
