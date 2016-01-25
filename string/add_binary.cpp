@@ -4,8 +4,8 @@
 using namespace std;
 
 /**
- *Given two binary strings, return their sum (also a binary string).
- *For example,
+ * Given two binary strings, return their sum (also a binary string).
+ * For example,
  *  a = "11"
  *  b = "1"
  *  return "100"

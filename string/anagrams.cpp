@@ -6,26 +6,36 @@
 using namespace std;
 
 /**
- *Given an array of strings, return all groups of strings that are anagrams.
- *Note: All inputs will be in lower-case.
+ * Given an array of strings, group anagrams together.
+ *
+ * For example, given: ["eat", "tea", "tan", "ate", "nat", "bat"],
+ * Return:
+ *
+ *   [
+ *     ["ate", "eat","tea"],
+ *     ["nat","tan"],
+ *     ["bat"]
+ *   ]
+ * Note:
+ *  For the return value, each inner list's elements must follow the lexicographic order.
+ *  All inputs will be in lower-case.
  * */
 
 class Solution {
     public:
-        vector<string> anagrams(vector<string> &strs) {
+        vector<vector<string> > groupAnagrams(vector<string>& strs) {
+            vector<vector<string> > result;
             unordered_map<string, vector<string> > group;
-            for(const auto &s: strs) {
-                string key = s;
+            for(int i = 0; i < strs.size(); i++) {
+                string key = strs[i];
                 sort(key.begin(), key.end());
-                group[key].push_back(s);
+                group[key].push_back(strs[i]);
             }
 
-            vector<string> result;
-            for(auto it = group.cbegin(); it != group.cend(); it++) {
-                if(it->second.size() > 1) {
-                    result.insert(result.end(), it->second.begin(), it->second.end());
-                }
+            for(unordered_map<string, vector<string> >::iterator it = group.begin(); it != group.end(); it++) {
+                result.push_back(vector<string>(it->second->begin(), it->second()->end()));
             }
+
             return result;
         }
 };
