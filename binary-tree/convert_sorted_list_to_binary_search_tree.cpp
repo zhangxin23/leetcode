@@ -8,8 +8,6 @@ using namespace std;
  * Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
  * */
 
-
-
 class Solution {
 public:
     TreeNode* sortedList2BST(ListNode *head) {
@@ -48,8 +46,11 @@ private:
         if(head == NULL)
             return NULL;
 
+        if(head->next == NULL)
+            return new TreeNode(head->val);
+
         ListNode *fast = head, *slow = head, *prev = head;
-        while(fast->next != NULL) {
+        while(fast && fast->next) {
             fast = fast->next->next;
             prev = slow;
             slow = slow->next;

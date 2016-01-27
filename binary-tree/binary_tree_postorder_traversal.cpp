@@ -12,10 +12,11 @@ public:
         TreeNode *curNode, *prevNode;
         stack<TreeNode *> stk;
 
-        if(root != NULL) {
-            stk.push(root);
-            curNode = root->left;
-        }
+        if(root == NULL)
+            return result;
+
+        stk.push(root);
+        curNode = root->left;
 
         while(!stk.empty()) {
             while(curNode != NULL) {
@@ -25,14 +26,14 @@ public:
 
             prevNode = NULL;
             while(!stk.empty()) {
-                curNode = stk.top();
+                TreeNode* temp = stk.top();
                 stk.pop();
-                if(curNode->right == prevNode) {
-                    result.push_back(curNode->val);
-                    prevNode = curNode;
+                if(temp->right == prevNode) {
+                    result.push_back(temp->val);
+                    prevNode = temp;
                 } else {
-                    stk.push(curNode);
-                    curNode = curNode->right;
+                    stk.push(temp);
+                    curNode = temp->right;
                     break;
                 }
             }

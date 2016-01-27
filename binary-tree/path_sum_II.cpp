@@ -40,6 +40,8 @@ public:
 
         if(!root->left && !root->right && root->val == sum) {
             result.push_back(cur);
+            cur.pop_back();
+            return;
         }
 
         pathSumCore(root->left, sum - root->val, cur, result);

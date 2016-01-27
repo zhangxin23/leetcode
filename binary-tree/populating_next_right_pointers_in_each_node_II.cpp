@@ -30,22 +30,22 @@ class Solution {
 public:
     void connect(TreeLinkNode *root) {
         while(root) {
-            TreeLinkNode *prev = NULL;
+            TreeLinkNode *cur = NULL;
             TreeLinkNode *next = NULL;
             for(; root; root = root->next) {
                 if(!next)
                     next = root->left ? root->left : root->right;
 
                 if(root->left) {
-                    if(prev)
-                        prev->next = root->left;
-                    prev = root->left;
+                    if(cur)
+                        cur->next = root->left;
+                    cur = root->left;
                 }
 
                 if(root->right) {
-                    if(prev)
-                        prev->next = root->right;
-                    prev = root->right;
+                    if(cur)
+                        cur->next = root->right;
+                    cur = root->right;
                 }
             }
             root = next;

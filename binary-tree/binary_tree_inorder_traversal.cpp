@@ -9,23 +9,24 @@ class Solution {
 public:
     vector<int> inorderTraversal(TreeNode *root) {
         vector<int> result;
-        TreeNode *node;
         stack<TreeNode *> stk;
+        if(root == NULL)
+            return result;
 
-        if(root != NULL) {
-            stk.push(root);
-            node = root->left;
-        }
-
+        stk.push(root);
+        TreeNode* node = root;
         while(!stk.empty()) {
-            if(node) {
-                stk.push(node);
+            if(node->left) {
+                stk.push(node->left);
                 node = node->left;
             } else {
-                node = stk.top();
-                result.push_back(node->val);
+                TreeNode* tmp = stk.top();
                 stk.pop();
-                node = node->right;
+                result.push_back(tmp->val);
+                if(tmp->right) {
+                    stk.push(tmp->right);
+                    node = tmp->right;
+                }
             }
         }
 

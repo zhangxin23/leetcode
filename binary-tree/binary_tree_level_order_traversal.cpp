@@ -1,6 +1,5 @@
 #include <iostream>
 #include <queue>
-#include <vector>
 #include "tree.h"
 
 using namespace std;
@@ -16,8 +15,10 @@ public:
         vector<int> level;
         vector<vector<int> > result;
 
-        if(root != NULL)
-            current.push(root);
+        if(root == NULL)
+            return result;
+
+        current.push(root);
 
         while(!current.empty()) {
             while(!current.empty()) {
