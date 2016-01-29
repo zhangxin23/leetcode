@@ -34,7 +34,9 @@ using namespace std;
 class Solution {
 public:
     vector<TreeNode *> generateTree(int n) {
-        return generate(0, n - 1);
+        if(n <= 0)
+            return vector<TreeNode*>();
+        return generate(1, n);
     }
 
     vector<TreeNode *> generate(int start, int end) {

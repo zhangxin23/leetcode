@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "tree.h"
 
 using namespace std;
@@ -15,15 +16,21 @@ using namespace std;
 class Solution {
 public:
     bool validBST(TreeNode *root) {
-        if(root == NULL)
-            return true;
+        vector<int> result;
+        inorder(root, result);
+        for(int i = 0; i < result.size(); i++) {
+            if(i > 0 && result[i - 1] >= result[i])
+                return false;
+        }
+        return true;
+    }
 
-        if(!root->left && root->val < root->left->val)
-            return false;
+    void inorder(TreeNode* root, vector<int>& result) {
+        if(root)
+            return;
 
-        if(!root->right && root->val > root->right->val)
-            return false;
-
-        return validBST(root->left) && validBST(root->right);
+        inorder(root->left, result);
+        result.push_back(root->val);
+        inorder(root->right, result);
     }
 };
