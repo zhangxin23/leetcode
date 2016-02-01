@@ -35,7 +35,8 @@ public:
 private:
     void dfs(vector<int> &nums, int gap, int start, vector<int> &intermediate, vector<vector<int> > &result) {
         if(gap == 0) {
-            result.push_back(intermediate);
+            if(!exist(result, intermediate))
+                result.push_back(intermediate);
             return;
         }
 
@@ -47,5 +48,24 @@ private:
             dfs(nums, gap - nums[i], start + 1, intermediate, result);
             intermediate.pop_back();
         }
+    }
+
+    bool exist(vector<vector<int> > table, vector<int> path) {
+        int col = table.size();
+        int row = path.size();
+        for(int i = 0; i < col; i++) {
+            if(table[i].size() == path.size()) {
+                int j = 0;
+                for(; j < row; j++) {
+                    if(table[i][j] != path[j]) {
+                        break;
+                    }
+                }
+
+                if(j == row)
+                    return true;
+            }
+        }
+        return false;
     }
 };
