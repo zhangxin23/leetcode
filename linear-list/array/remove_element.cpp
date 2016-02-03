@@ -4,14 +4,14 @@
  * */
 
 class Solution {
-    public:
-        int removeElement(int A[], int n, int element) {
-            int index = 0;
-            for(int i = 0; i < n; i++) {
-                if(A[i] != element) {
-                    A[index++] = A[i];
-                }
+public:
+    int removeElement(int A[], int n, int element) {
+        int index = 0;
+        for(int i = 0; i < n; i++) {
+            if(A[i] != element) {
+                A[index++] = A[i];
             }
-            return index;
         }
+        return index;
+    }
 };

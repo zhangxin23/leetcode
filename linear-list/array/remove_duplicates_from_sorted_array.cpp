@@ -6,17 +6,17 @@
  * */
 
 class Solution {
-    public:
-        int removeDuplicates(int A[], int n) {
-            if(n < 2)
-                return n;
+public:
+    int removeDuplicates(int A[], int n) {
+        if(n < 2)
+            return n;
 
-            int index = 0;
-            for(int i = 0; i < n; i++) {
-                if(A[index] != A[i]) {
-                    A[++index] = A[i];
-                }
+        int index = 0;
+        for(int i = 0; i < n; i++) {
+            if(A[index] != A[i]) {
+                A[++index] = A[i];
             }
-            return index + 1;
         }
+        return index + 1;
+    }
 };

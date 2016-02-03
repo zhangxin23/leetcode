@@ -28,16 +28,22 @@ int atoi(const char* c) {
 
     while(*c) {
         if(*c < '0' || *c > '9') {
-            return result;
+            if(sign == 1)
+                return result;
+            else if(sign == -1)
+                return -result;
         }
 
         result = result * 10 + (*c - '0');
-        if((sign == 1 && result > INT_MAX) || (sign == -1 && -result < INT_MIN)) {
+
+        if(sign == 1 && result > INT_MAX) {
             errno = EOVERFLOW;
-            if(sign == 1)
-                return INT_MAX;
-            else if(sign == -1)
-                return INT_MIN;
+            return INT_MAX;
+        }
+
+        if(sign == -1 && -result < INT_MIN) {
+            errno = EOVERFLOW;
+            return INT_MIN;
         }
 
         c++;
