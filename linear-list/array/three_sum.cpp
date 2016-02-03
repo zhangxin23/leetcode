@@ -21,18 +21,34 @@ public:
 
     vector<vector<int> > threeSumFinal(vector<int> &nums) {
         vector<vector<int> > result;
-        int size = nums.size();
-        if(size < 3)
+        int n = nums.size();
+        if(n < 3)
             return result;
 
-        for(int first = 0; first < size - 2; first++) {
+        sort(nums.begin(), nums.end());
+        for(int first = 0; first < n - 2; first++) {
+            if(nums[first] > 0)
+                return result;
+
+            if(first > 0 && nums[first] == nums[first - 1])
+                continue;
+
             int second = first + 1;
-            int third = size - 1;
+            int third = n - 1;
 
             while(second < third) {
+                if(nums[first] + nums[second] > 0)
+                    break;
+
                 int sum = nums[first] + nums[second] + nums[third];
                 if(sum == 0) {
-                    result.push_back({nums[first], nums[second], nums[third]});
+                    result.push_back(vector<int>({nums[first], nums[second], nums[third]}));
+                    second++;
+                    third--;
+                    while(nums[second] == nums[second - 1])
+                        second++;
+                    while(nums[third] == nums[third + 1])
+                        third--;
                 } else if(sum > 0) {
                     third--;
                 } else {
@@ -40,7 +56,6 @@ public:
                 }
             }
         }
-
         return result;
     }
 
