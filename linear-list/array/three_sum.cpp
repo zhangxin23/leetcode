@@ -17,95 +17,109 @@ using namespace std;
  * */
 
 class Solution {
-    public:
+public:
 
-        vector<vector<int> > threeSumFinal(vector<int> &nums) {
-            vector<vector<int> > result;
-            int size = nums.size();
-            if(size < 3)
+    vector<vector<int> > threeSumFinal(vector<int> &nums) {
+        vector<vector<int> > result;
+        int n = nums.size();
+        if(n < 3)
+            return result;
+
+        sort(nums.begin(), nums.end());
+        for(int first = 0; first < n - 2; first++) {
+            if(nums[first] > 0)
                 return result;
 
-            for(int first = 0; first < size - 2; first++) {
-                int second = first + 1;
-                int third = size - 1;
+            if(first > 0 && nums[first] == nums[first - 1])
+                continue;
 
-                while(second < third) {
-                    int sum = nums[first] + nums[second] + nums[third];
-                    if(sum == 0) {
-                        result.push_back({nums[first], nums[second], nums[third]});
-                    } else if(sum > 0) {
-                        third--;
-                    } else {
+            int second = first + 1;
+            int third = n - 1;
+
+            while(second < third) {
+                if(nums[first] + nums[second] > 0)
+                    break;
+
+                int sum = nums[first] + nums[second] + nums[third];
+                if(sum == 0) {
+                    result.push_back(vector<int>({nums[first], nums[second], nums[third]}));
+                    second++;
+                    third--;
+                    while(nums[second] == nums[second - 1])
                         second++;
-                    }
+                    while(nums[third] == nums[third + 1])
+                        third--;
+                } else if(sum > 0) {
+                    third--;
+                } else {
+                    second++;
                 }
             }
-
-            return result;
         }
+        return result;
+    }
 
-        vector<vector<int> > threeSum(vector<int> & num) {
-            vector<vector<int> > result;
-            if(num.size() < 3)
-                return result;
-            sort(num.begin(), num.end());
-            const int target = 0;
+    vector<vector<int> > threeSum(vector<int> & num) {
+        vector<vector<int> > result;
+        if(num.size() < 3)
+            return result;
+        sort(num.begin(), num.end());
+        const int target = 0;
 
-            auto last = num.end();
-            for(auto i = num.begin(); i < last - 2; i++) {
-                auto j = i + 1;
-                if(i > num.begin() && *i == *(i -1))
-                    continue;
-                auto k = last - 1;
-                while(j < k) {
-                    if(*i + *j + *k < target) {
+        auto last = num.end();
+        for(auto i = num.begin(); i < last - 2; i++) {
+            auto j = i + 1;
+            if(i > num.begin() && *i == *(i -1))
+                continue;
+            auto k = last - 1;
+            while(j < k) {
+                if(*i + *j + *k < target) {
+                    ++j;
+                    while(*j == *(j - 1) && j < k)
                         ++j;
-                        while(*j == *(j - 1) && j < k)
-                            ++j;
-                    } else if(*i + *j + *k > target) {
+                } else if(*i + *j + *k > target) {
+                    --k;
+                    while(*k == *(k + 1) && j < k)
                         --k;
-                        while(*k == *(k + 1) && j < k)
-                            --k;
-                    } else {
-                        result.push_back({*i, *j, *k});
+                } else {
+                    result.push_back({*i, *j, *k});
+                    ++j;
+                    --k;
+                    while(*j == *(j -1) && *k == *(k + 1) && j < k)
                         ++j;
-                        --k;
-                        while(*j == *(j -1) && *k == *(k + 1) && j < k)
-                            ++j;
-                    }
                 }
             }
-            return result;
         }
+        return result;
+    }
 
+    vector<vector<int> > threeSum_1(vector<int>& num, int target) {
+        vector<vector<int> > result;
+        if(num.size() < 3)
+            return result;
+        sort(num.begin(), num.end());
 
-        vector<vector<int> > threeSum_1(vector<int>& num, int target) {
-            vector<vector<int> > result;
-            if(num.size() < 3)
-                return result;
-            sort(num.begin(), num.end());
+        auto last = num.end();
+        for(auto a = num.begin(); a != last - 2; a++) {
+            auto b = a + 1;
+            auto c = last - 1;
 
-            auto last = num.end();
-            for(auto a = num.begin(); a != last - 2; a++) {
-                auto b = a + 1;
-                auto c = last - 1;
-
-                while(b < c) {
-                    const int sum = *a + *b + *c;
-                    if(sum < target)
-                        b++;
-                    else if(sum > target)
-                        c--;
-                    else {
-                        result.push_back({*a, *b, *c});
-                        b++;
-                        c--;
-                    }
+            while(b < c) {
+                const int sum = *a + *b + *c;
+                if(sum < target)
+                    b++;
+                else if(sum > target)
+                    c--;
+                else {
+                    result.push_back({*a, *b, *c});
+                    b++;
+                    c--;
                 }
             }
-
-            sort(result.begin(), result.end());
-            result.erase(unique(result.begin(), result.end(), result.end()));
-            return result;
         }
+
+        sort(result.begin(), result.end());
+        result.erase(unique(result.begin(), result.end(), result.end()));
+        return result;
+    }
 };

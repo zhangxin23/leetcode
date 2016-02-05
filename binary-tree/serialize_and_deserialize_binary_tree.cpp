@@ -1,6 +1,6 @@
 #include <iostream>
 #include <queue>
-#include <sstream>
+#include <string.h>
 #include "tree.h"
 
 using namespace std;
@@ -26,6 +26,10 @@ using namespace std;
  * Your serialize and deserialize algorithms should be stateless.
  * */
 
+// Your Codec object will be instantiated and called as such:
+// Codec codec;
+// codec.deserialize(codec.serialize(root));
+
 //
 // Created by zhangxin on 16/1/31.
 //
@@ -35,66 +39,73 @@ public:
 
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
-        string result = "[";
+        string result = "";
         queue<TreeNode*> q;
         TreeNode* node = NULL;
         if(root == NULL)
             return result;
 
         q.push(root);
-        result += to_string(root->val);
         while(!q.empty()) {
             node = q.front();
             q.pop();
 
-            result += ",";
-            result += root->left ? to_string(root->left->val) : "null";
-            result += ",";
-            result += root->right ? to_string(root->right->val) : "null";
-
-            if(root->left)
-                q.push(root->left);
-
-            if(root->right)
-                q.push(root->right);
+            if(node) {
+                result += to_string(node->val) + ",";
+                q.push(node->left);
+                q.push(node->right);
+            } else {
+                result += "null,";
+            }
         }
 
-        result += "]";
-        return result;
+        if(result == "")
+            return result;
+        return result.substr(0, result.length() -1);
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-        stringstream ss(data.substr(1, data.length() - 1));
-        string item;
-        vector<string> elements;
-        queue<TreeNode*> q;
-        while(getline(ss, item, ','))
-            elements.push_back(item);
-
+        vector<string> elements = split(data, ",");
         int len = elements.size();
         if(len == 0)
             return NULL;
 
-        TreeNode* root = new TreeNode(atoi(elements[0].c_str()));
-        q.push(root);
-        for(int i = 0; i < len / 2; i++) {
-            TreeNode* left = elements[2 * i + 1] == "null" ? NULL : new TreeNode(atoi(elements[2 * i + 1].c_str()));
-            TreeNode* right = elements[2 * i + 2] == "null" ? NULL : new TreeNode(atoi(elements[2 * i + 2].c_str()));
-            if(left)
-                q.push(left);
-            if(right)
-                q.push(right);
+        vector<int> nums(len, 0);
+        vector<TreeNode*> nodes(len, NULL);
 
-            TreeNode* node = q.front();
-            q.pop();
-            node->left = left;
-            node->right = right;
+        for(int i = 0, null_count = 0; i < elements.size(); i++) {
+            if(elements[i] == "null") {
+                nums[i] = null_count;
+                null_count++;
+            } else {
+                nums[i] = null_count;
+                nodes[i] = new TreeNode(atoi(elements[i].c_str()));
+            }
         }
-        return root;
+
+        for(int i = 0; i < len; i++) {
+            if(nodes[i] == NULL)
+                continue;
+
+            nodes[i]->left = nodes[2 * (i - nums[i]) + 1];
+            nodes[i]->right = nodes[2 * (i - nums[i]) + 2];
+        }
+
+        return nodes[0];
+    }
+
+private:
+    vector<string> split(string& str, const char* c) {
+        char *cstr, *p;
+        vector<string> result;
+        cstr = new char[str.size() + 1];
+        strcpy(cstr, str.c_str());
+        p = strtok(cstr, c);
+        while(p != NULL) {
+            result.push_back(p);
+            p = strtok(NULL, c);
+        }
+        return result;
     }
 };
-
-// Your Codec object will be instantiated and called as such:
-// Codec codec;
-// codec.deserialize(codec.serialize(root));

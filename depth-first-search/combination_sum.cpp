@@ -26,23 +26,23 @@ public:
         sort(nums.begin(), nums.end());
         vector<vector<int> > result;
         vector<int> intermediate;
-        dfs(nums, target, intermediate, result);
+        dfs(nums, target, 0, intermediate, result);
         return result;
     }
 
 private:
-    void dfs(vector<int> &nums, int gap, vector<int> &intermediate, vector<vector<int> > &result) {
+    void dfs(vector<int> &nums, int gap, int start, vector<int> &intermediate, vector<vector<int> > &result) {
         if(gap == 0) {
             result.push_back(intermediate);
             return;
         }
 
-        for(int i = 0; i < nums.size(); i++) {
+        for(int i = start; i < nums.size(); i++) {
             if(gap < nums[i])
                 return;
 
             intermediate.push_back(nums[i]);
-            dfs(nums, gap - nums[i], intermediate, result);
+            dfs(nums, gap - nums[i], i, intermediate, result);
             intermediate.pop_back();
         }
     }
