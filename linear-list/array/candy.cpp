@@ -29,7 +29,7 @@ public:
         inr = 1;
         for(int i = n - 2; i >= 0; i--) {
             if(ratings[i] > ratings[i + 1]) {
-                increments[i] = max(increments[i + 1], inr++);
+                increments[i] = max(increments[i], inr++);
             } else {
                 inr = 1;
             }
