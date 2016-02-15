@@ -8,35 +8,35 @@
  * */
 
 class Solution {
-    public:
-        ListNode* deleteDuplicates(ListNode* head) {
-            if(head == NULL)
-                return NULL;
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head == NULL)
+            return NULL;
 
-            ListNode dummy(-1);
-            dummy.next = head;
-            ListNode* prev = &dummy, *cur = head;
-            bool duplicate = false;
-            while(cur) {
-                while(cur->next != NULL && cur->val == cur->next->val) {
-                    ListNode* temp = cur->next;
-                    cur->next = temp->next;
-                    delete temp;
-                    duplicate = true;
-                }
-
-                if(duplicate) {
-                    prev->next = cur->next;
-                    delete cur;
-                    cur = prev->next;
-                    duplicate = false;
-                    continue;
-                }
-
-                prev = cur;
-                cur = cur->next;
+        ListNode dummy(-1);
+        dummy.next = head;
+        ListNode* prev = &dummy, *cur = head;
+        bool duplicate = false;
+        while(cur) {
+            while(cur->next != NULL && cur->val == cur->next->val) {
+                ListNode* temp = cur->next;
+                cur->next = temp->next;
+                delete temp;
+                duplicate = true;
             }
 
-            return dummy.next;
+            if(duplicate) {
+                prev->next = cur->next;
+                delete cur;
+                cur = prev->next;
+                duplicate = false;
+                continue;
+            }
+
+            prev = cur;
+            cur = cur->next;
         }
+
+        return dummy.next;
+    }
 };

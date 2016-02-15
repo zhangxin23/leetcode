@@ -8,21 +8,21 @@
  * */
 
 class Solution {
-    public:
-        ListNode* removeDulicates(ListNode* head) {
-            if(head == NULL)
-                return NULL;
+public:
+    ListNode* removeDulicates(ListNode* head) {
+        if(head == NULL)
+            return NULL;
 
-            for(ListNode* prev = head, *cur = head->next; cur; cur = cur->next) {
-                if(prev->val == cur->val) {
-                    prev->next = cur->next;
-                    delete cur;
-                    cur = prev;
-                } else {
-                    prev = cur;
-                }
+        for(ListNode* prev = head, *cur = head->next; cur; cur = cur->next) {
+            if(prev->val == cur->val) {
+                prev->next = cur->next;
+                delete cur;
+                cur = prev;
+            } else {
+                prev = cur;
             }
-
-            return head;
         }
+
+        return head;
+    }
 };
