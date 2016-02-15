@@ -13,31 +13,60 @@ using namespace std;
  * */
 
 class Solution {
-    public:
-        int threeSumClosest(vector<int>& num, int target) {
-            int result = 0;
-            int min_gap = INT_MAX;
-            sort(num.begin(), num.end());
+public:
+    int threeSumClosest_final(vector<int>& nums, int target) {
+        int result = 0;
+        int min_gap = INT_MAX;
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
 
-            auto last = num.end();
-            for(auto a = num.begin(); a != last - 2; a++) {
-                auto b = a + 1;
-                auto c = last - 1;
+        for(int first = 0; first < n - 2; first++) {
+            int second = first + 1;
+            int third = n - 1;
 
-                while(b < c) {
-                    const int sum = *a + *b + *c;
-                    const int gap = abs(sum - target);
-                    if(min_gap > gap) {
-                        result = sum;
-                        min_gap = gap;
-                    }
+            while(second < third) {
+                int sum = nums[first] + nums[second] + nums[third];
+                int gap = abs(sum - target);
+                if(gap < min_gap) {
+                    min_gap = gap;
+                    result = sum;
+                }
 
-                    if(sum < target)
-                        b++;
-                    else
-                        c--;
+                if(sum > target) {
+                    third--;
+                } else {
+                    second++;
                 }
             }
-            return result;
         }
+
+        return result;
+    }
+
+    int threeSumClosest(vector<int>& num, int target) {
+        int result = 0;
+        int min_gap = INT_MAX;
+        sort(num.begin(), num.end());
+
+        auto last = num.end();
+        for(auto a = num.begin(); a != last - 2; a++) {
+            auto b = a + 1;
+            auto c = last - 1;
+
+            while(b < c) {
+                const int sum = *a + *b + *c;
+                const int gap = abs(sum - target);
+                if(min_gap > gap) {
+                    result = sum;
+                    min_gap = gap;
+                }
+
+                if(sum < target)
+                    b++;
+                else
+                    c--;
+            }
+        }
+        return result;
+    }
 };
