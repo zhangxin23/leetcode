@@ -11,53 +11,53 @@
  * */
 
 class Solution {
-    public:
-        ListNode* reverseNodesInKGroup(ListNode* head, int k) {
-            if(head == NULL || head->next == NULL || k < 2)
-                return head;
+public:
+    ListNode* reverseNodesInKGroup(ListNode* head, int k) {
+        if(head == NULL || head->next == NULL || k < 2)
+            return head;
 
-            ListNode dummy(-1);
-            dummy.next = head;
-            for(ListNode* prev = &dummy, *end = prev->next; end; end = prev->next) {
-                int i = 0;
-                for(; i < k && end != NULL; k++) {
-                    end = end->next;
-                }
-
-                if(i != k - 1)
-                    break;
-
-                prev = reverse(prev, prev->next, end);
-            }
-            return dummy.next;
-        }
-
-        ListNode* reverse(ListNode* prev, ListNode* begin, ListNode* end) {
-            ListNode* prev2 = begin;
-            ListNode* cur = begin->next;
-            ListNode* end_next = end->next;
-            while(cur != end_next) {
-                prev2->next = cur->next;
-                cur->next = prev->next;
-                prev->next = cur;
-                cur = prev2->next;
+        ListNode dummy(-1);
+        dummy.next = head;
+        for(ListNode* prev = &dummy, *end = prev->next; end; end = prev->next) {
+            int i = 0;
+            for(; i < k && end != NULL; k++) {
+                end = end->next;
             }
 
-            return prev2;
+            if(i != k - 1)
+                break;
+
+            prev = reverse(prev, prev->next, end);
+        }
+        return dummy.next;
+    }
+
+    ListNode* reverse(ListNode* prev, ListNode* begin, ListNode* end) {
+        ListNode* prev2 = begin;
+        ListNode* cur = begin->next;
+        ListNode* end_next = end->next;
+        while(cur != end_next) {
+            prev2->next = cur->next;
+            cur->next = prev->next;
+            prev->next = cur;
+            cur = prev2->next;
         }
 
-        ListNode* reverseKNodes(ListNode* prev, ListNode* begin, ListNode* end) {
-            ListNode* end_next = end->next;
-            for(ListNode* prev1 = begin, *prev2 = begin->next, *prev3 = prev2->next;
-                prev3 != end_next;
-                prev1 = prev2, prev2 = prev3, prev3 = prev3 ? prev3->next : NULL) {
+        return prev2;
+    }
 
-                prev2->next = prev1;
-            }
+    ListNode* reverseKNodes(ListNode* prev, ListNode* begin, ListNode* end) {
+        ListNode* end_next = end->next;
+        for(ListNode* prev1 = begin, *prev2 = begin->next, *prev3 = prev2->next;
+            prev3 != end_next;
+            prev1 = prev2, prev2 = prev3, prev3 = prev3 ? prev3->next : NULL) {
 
-            prev->next = end;
-            begin->next = end_next;
-            prev = begin;
-            return prev;
+            prev2->next = prev1;
         }
+
+        prev->next = end;
+        begin->next = end_next;
+        prev = begin;
+        return prev;
+    }
 };

@@ -6,24 +6,24 @@
  * */
 
 class Solution {
-    public:
-        ListNode* rotateRight(ListNode* head, int k) {
-            if(head == NULL || k == 0)
-                return head;
-
-            int len = 1;
-            ListNode* p = head;
-            while(p->next) {
-                len++;
-                p = p->next;
-            }
-            k %= len;
-            p->next = head;
-            for(int step = 0; step < len - k; step++) {
-                p = p->next;
-            }
-            head = p->next;
-            p->next = NULL;
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head == NULL || k == 0)
             return head;
+
+        int len = 1;
+        ListNode* p = head;
+        while(p->next) {
+            len++;
+            p = p->next;
         }
+        k %= len;
+        p->next = head;
+        for(int step = 0; step < len - k; step++) {
+            p = p->next;
+        }
+        head = p->next;
+        p->next = NULL;
+        return head;
+    }
 };
