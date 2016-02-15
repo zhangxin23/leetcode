@@ -8,25 +8,25 @@
  * */
 
 class Solution {
-    public:
-        ListNode* swapNodesInPairs(ListNode* head) {
-            if(head == NULL || head->next == NULL)
-                return head;
+public:
+    ListNode* swapNodesInPairs(ListNode* head) {
+        if(head == NULL || head->next == NULL)
+            return head;
 
-            ListNode dummy(-1);
-            dummy.next = head;
-            ListNode* prev1 = &dummy;
-            ListNode* prev2 = prev1->next;
-            ListNode* cur = prev2->next;
-            while(prev2 && prev2->next) {
-                prev2->next = cur->next;
-                cur->next = prev1->next;
-                prev1->next = cur;
-                prev1 = prev2;
-                prev2 = prev2->next;
-                cur = prev2->next;
-            }
-
-            return dummy.next;
+        ListNode dummy(-1);
+        dummy.next = head;
+        ListNode* prev1 = &dummy;
+        ListNode* prev2 = prev1->next;
+        ListNode* cur = prev2->next;
+        while(prev2 && prev2->next) {
+            prev2->next = cur->next;
+            cur->next = prev1->next;
+            prev1->next = cur;
+            prev1 = prev2;
+            prev2 = prev2->next;
+            cur = prev2->next;
         }
+
+        return dummy.next;
+    }
 };
